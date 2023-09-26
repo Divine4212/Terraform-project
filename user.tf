@@ -49,7 +49,7 @@ resource "aws_security_group" "User-Jenkins_SG" {
 
 resource "aws_s3_bucket" "user-jenkins_bucket" {
     # Use the generated random hexadecimal string, convert to lowercase, and replace invalid characters with hyphens
-    bucket = "user-jenkins-bucket-${tr(replace(random_id.randomsss.hex, "/[^a-z0-9-]/", "-"), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")}"
+    bucket = "user-jenkins-bucket-${try(replace(random_id.randomsss.hex, "/[^a-z0-9-]/", "-"), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz")}"
 
     tags = {
         Name = "user-jenkins_bucket"
